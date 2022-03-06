@@ -1,0 +1,5 @@
+click: user.click_pause()
+click medium: user.click_pause(.5)
+click slow: user.click_pause(1)
+auto click: user.start_autoclick()
+#auto click stop: user.dea5ivate_automouse()
