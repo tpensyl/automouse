@@ -1,6 +1,6 @@
 from talon import Module, ctrl
-import time, multiprocessing
-
+import time, multiprocessing, subprocess
+import time, pynput
 from talon import ctrl
 
 mod = Module()
@@ -20,9 +20,15 @@ class Actions:
         global automouse_process
         print("tommy test" + str(automouse_process))
         if automouse_process:        
-            automouse_process.terminate()
-        automouse_process = multiprocessing.Process(target=click_on_stop, args=())
-        automouse_process.start()
+            try:
+                automouse_process.terminate()
+            except Exception as e:
+                print(e)
+        else:
+#             automouse_process = subprocess.run("python user/automouse/clickOnStop.py", shell=True)
+            automouse_process = subprocess.run(["python", "user/automouse/clickOnStop.py"] )
+        # automouse_process = multiprocessing.Process(target=click_on_stop, args=())
+        # automouse_process.start()
 
 def click_on_stop(interval_sec=.11, cooldown_sec=.3, hold_ms=0):
     global mouse_position_last, is_mouse_moving, pmouse_position_last
