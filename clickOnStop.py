@@ -1,6 +1,5 @@
-# import time, pynput
-# from pynput.mouse import Button
-from talon import ctrl
+import time, pynput
+from pynput.mouse import Button
 
 def clickLoop(s):
     while True:
